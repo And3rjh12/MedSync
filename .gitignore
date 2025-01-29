@@ -1,0 +1,10 @@
+# Dependencias
+node_modules/
+
+# Archivos generados por Expo
+.expo/
+.expo-shared/
+
+# Archivos de bloqueo (dependencias específicas, no recomendadas para compartir)
+package-lock.json
+yarn.lock

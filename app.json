@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "MedSyncFrom",
+    "slug": "MedSyncFrom",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "icon": "./assets/icon.png",  
+    "splash": {
+      "image": "./assets/splash.png",  
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png", 
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      
+    }
+  }
+}
