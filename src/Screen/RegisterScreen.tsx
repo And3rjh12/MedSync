@@ -3,7 +3,6 @@ import {
   View,
   TextInput,
   Text,
-  StyleSheet,
   TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
@@ -12,13 +11,13 @@ import {
   Keyboard
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import { FontAwesome } from '@expo/vector-icons'; // Add iconos
+import { FontAwesome } from '@expo/vector-icons'; 
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcaseMedical } from '@fortawesome/free-solid-svg-icons';
+import styles from "./styles/registerStyles"; // Importando los estilos
 
-
-export default function App() {
+export default function RegisterScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -47,11 +46,7 @@ export default function App() {
       });
       setMessage(response.data.message || "User created successfully!");
     } catch (error: any) {
-      if (error.response) {
-        setMessage(`Error: ${error.response.data.detail}`);
-      } else {
-        setMessage(`Error: ${error.message}`);
-      }
+      setMessage(error.response?.data?.detail || `Error: ${error.message}`);
     }
   };
 
@@ -93,87 +88,19 @@ export default function App() {
             />
           </View>
 
-          {/* Name */}
-          <View style={styles.inputContainer}>
-            <FontAwesome name="user" size={20} color="#4CAF50" style={styles.inputIcon} />
-            <TextInput
-              style={styles.input}
-              placeholder="Name"
-              value={name}
-              onChangeText={setName}
-              placeholderTextColor="#a0a0a0"
-            />
-          </View>
-
-          {/* Last Name */}
-          <View style={styles.inputContainer}>
-            <FontAwesome name="user" size={20} color="#4CAF50" style={styles.inputIcon} />
-            <TextInput
-              style={styles.input}
-              placeholder="Last Name"
-              value={lastName}
-              onChangeText={setLastName}
-              placeholderTextColor="#a0a0a0"
-            />
-          </View>
-
           {/* Role */}
           <Text style={styles.label}>Role</Text>
           <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={role}
-              onValueChange={(itemValue) => setRole(itemValue)}
-              style={styles.picker}
-            >
+            <Picker selectedValue={role} onValueChange={(itemValue) => setRole(itemValue)} style={styles.picker}>
               <Picker.Item label="Patient" value="patient" />
               <Picker.Item label="Doctor" value="doctor" />
             </Picker>
-          </View>
-
-          {/* Age */}
-          <View style={styles.inputContainer}>
-            <FontAwesome name="calendar" size={20} color="#4CAF50" style={styles.inputIcon} />
-            <TextInput
-              style={styles.input}
-              placeholder="Age"
-              value={age}
-              onChangeText={setAge}
-              keyboardType="numeric"
-              placeholderTextColor="#a0a0a0"
-            />
-          </View>
-
-          {/* Gender */}
-          <Text style={styles.label}>Gender</Text>
-          <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={gender}
-              onValueChange={(itemValue) => setGender(itemValue)}
-              style={styles.picker}
-            >
-              <Picker.Item label="Male" value="male" />
-              <Picker.Item label="Female" value="female" />
-            </Picker>
-          </View>
-
-          {/* Phone */}
-          <View style={styles.inputContainer}>
-            <FontAwesome name="phone" size={20} color="#4CAF50" style={styles.inputIcon} />
-            <TextInput
-              style={styles.input}
-              placeholder="Phone"
-              value={phone}
-              onChangeText={setPhone}
-              keyboardType="phone-pad"
-              placeholderTextColor="#a0a0a0"
-            />
           </View>
 
           {/* Specialty (only for doctors) */}
           {role === "doctor" && (
             <View style={styles.inputContainer}>
               <FontAwesomeIcon icon={faBriefcaseMedical} size="lg" color="#4CAF50" style={styles.inputIcon} />
-
               <TextInput
                 style={styles.input}
                 placeholder="Specialty"
@@ -196,86 +123,3 @@ export default function App() {
     </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f5f8fc",
-    paddingTop: 20,
-  },
-  scrollContainer: {
-    padding: 10,
-    flexGrow: 1,
-    justifyContent: "center",
-  },
-  medSyncTitle: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#4CAF50",
-    textAlign: "center",
-    marginBottom: 5,
-  },
-  createAccountTitle: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#333",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 10,
-    marginBottom: 12,
-    backgroundColor: "#fff",
-    paddingLeft: 12,
-    paddingRight: 10,
-  },
-  input: {
-    flex: 1,
-    height: 45,
-    fontSize: 16,
-    color: "#333",
-  },
-  inputIcon: {
-    marginRight: 10,
-  },
-  pickerContainer: {
-    height: 45,
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 10,
-    marginBottom: 15,
-    justifyContent: "center",
-    backgroundColor: "#fff",
-  },
-  picker: {
-    height: "100%",
-  },
-  label: {
-    fontSize: 16,
-    color: "#555",
-    marginBottom: 5,
-  },
-  button: {
-    height: 45,
-    backgroundColor: "#4CAF50",
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 15,
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  message: {
-    marginTop: 15,
-    textAlign: "center",
-    fontSize: 16,
-    color: "green",
-  },
-});
