@@ -46,7 +46,7 @@ const registerStyles = StyleSheet.create({
     marginRight: 10,
   },
   pickerContainer: {
-    height: 45,
+    height: 55,
     borderWidth: 1,
     borderColor: "#ddd",
     borderRadius: 10,

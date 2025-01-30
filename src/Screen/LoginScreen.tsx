@@ -5,7 +5,7 @@ import {
 } from "react-native";
 import axios from "axios";
 import { FontAwesome } from "@expo/vector-icons"; // Icons
-import styles from "./styles/loginStyles"; // Importando los estilos desde styles/loginStyles.ts
+import styles from "./styles/loginStyles"; // import styles
 
 interface LoginResponse {
   token: string;
@@ -27,12 +27,12 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
     setLoading(true);
     try {
       const response = await axios.post<LoginResponse>(
-        "http://192.168.100.47:8000/login", 
+        "http://192.168.1.13:8000/login", 
         { email, password }
       );
       setToken(response.data.token);
       setError("");
-      navigation.navigate("Home"); // Ir a pantalla principal
+      navigation.navigate("Home"); // sacreen
     } catch (err) {
       setError("Email o contraseña inválidos.");
     } finally {

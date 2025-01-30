@@ -2,52 +2,40 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { FontAwesome } from "@expo/vector-icons";  
-import styles from "./styles/homeStyles"; //import styles
+import styles from "./styles/patientScreen"; // import styles
 
-// Definir la lista de parámetros del stack
+
 type RootStackParamList = {
-  Home: undefined;
+  PatientHome: undefined;
   Agendamiento: undefined;
   HistorialClinico: undefined;
-  BuscarPaciente: undefined;
-  BuscarDoctor: undefined;
   Encuentranos: undefined;
 };
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
+type PatientHomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "PatientHome">;
 
-interface HomeScreenProps {
-  navigation: HomeScreenNavigationProp;
+interface PatientHomeScreenProps {
+  navigation: PatientHomeScreenNavigationProp;
 }
 
-const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
+const PatientHomeScreen: React.FC<PatientHomeScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      {/* Botón para agendamiento */}
+      {/* 
+Scheduling button*/}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Agendamiento")}>
         <FontAwesome name="calendar" size={24} color="white" />
         <Text style={styles.buttonText}>Agendamiento</Text>
       </TouchableOpacity>
 
-      {/* Botón historial clínico */}
+      {/* Clinical history button
+*/}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("HistorialClinico")}>
         <FontAwesome name="file" size={24} color="white" />
         <Text style={styles.buttonText}>Historial Clínico</Text>
       </TouchableOpacity>
 
-      {/* Botón buscar paciente */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BuscarPaciente")}>
-        <FontAwesome name="search" size={24} color="white" />
-        <Text style={styles.buttonText}>Buscar Paciente</Text>
-      </TouchableOpacity>
-
-      {/* Botón buscar doctor */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BuscarDoctor")}>
-        <FontAwesome name="search" size={24} color="white" />
-        <Text style={styles.buttonText}>Buscar Doctor</Text>
-      </TouchableOpacity>
-
-      {/* Botón mapa */}
+      {/* Button map */}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Encuentranos")}>
         <FontAwesome name="map-marker" size={24} color="white" />
         <Text style={styles.buttonText}>Encuéntranos Aquí</Text>
@@ -56,4 +44,4 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default PatientHomeScreen;
