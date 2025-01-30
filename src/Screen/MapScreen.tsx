@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, StyleSheet, Text, Button, Alert } from 'react-native';
+import { View, Text, Button, Alert } from 'react-native';
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import * as Location from 'expo-location';
 import axios from 'axios';
+import styles from "./styles/mapStyles"; 
 
 const MapScreen: React.FC = () => {
   const [directions, setDirections] = useState<any>(null);
@@ -23,7 +24,6 @@ const MapScreen: React.FC = () => {
 
   const googleMapsApiKey = 'AIzaSyBuxWNDjHkFH0IM-WYtLR09FAPEyeyCOdA'; 
 
-  
   const requestPermissions = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
@@ -33,7 +33,6 @@ const MapScreen: React.FC = () => {
     return true;
   };
 
-  
   const getUserLocation = async () => {
     try {
       const location = await Location.getCurrentPositionAsync({});
@@ -46,7 +45,6 @@ const MapScreen: React.FC = () => {
     }
   };
 
- 
   const fetchDirections = useCallback(async (destination: any) => {
     if (!userLocation) return;
 
@@ -73,7 +71,6 @@ const MapScreen: React.FC = () => {
     }
   }, [userLocation]);
 
-  
   const handleMarkerPress = (location: any) => {
     setSelectedLocation(location);
     fetchDirections(location);
@@ -144,23 +141,5 @@ const MapScreen: React.FC = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    flex: 1,
-  },
-  infoContainer: {
-    padding: 10,
-    backgroundColor: '#f8f8f8',
-    textAlign: 'center',
-  },
-  infoText: {
-    fontSize: 16,
-    color: '#333',
-  },
-});
 
 export default MapScreen;
