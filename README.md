@@ -46,7 +46,7 @@ MedSyncFrom/
 Instalación y Configuración
 
 1️⃣ Clonar el repositorio
-git clone https://github.com/tu-usuario/MedSyncFrom.git
+git clone [https://github.com/tu-usuario/MedSyncFrom.git](https://github.com/And3rjh12/MedSync)
 cd MedSyncFrom
 
 2️⃣ Instalar dependencias
