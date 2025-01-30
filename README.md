@@ -69,8 +69,8 @@ npx expo start --ios
 
 Features
 
-Login/Register
-Search for Doctors and Patients (Search)
-Appointment Scheduling (Appointment)
-Viewing Locations on Map (MapScreen)
-Navigation between Screens
+-Login/Register
+-Search for Doctors and Patients (Search)
+-Appointment Scheduling (Appointment)
+-Viewing Locations on Map (MapScreen)
+-Navigation between Screens
