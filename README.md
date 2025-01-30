@@ -43,25 +43,34 @@ MedSyncFrom/
 │── tsconfig.json
 │── README.md
 
-Instalación y Configuración
+Installation and Configuration
 
-1️⃣ Clonar el repositorio
-git clone [https://github.com/tu-usuario/MedSyncFrom.git](https://github.com/And3rjh12/MedSync)
-cd MedSyncFrom
+1️⃣ Clone the repository
+git clone https://github.com/And3rjh12/MedSync  cd MedSyncFrom
 
-2️⃣ Instalar dependencias
+
+2️⃣ Install dependencies
 npm install
 
-3️⃣ Configurar Google Maps API Key
-Para que la pantalla de mapas funcione correctamente, debes agregar tu clave de API de Google Maps en src/Screen/MapScreen.tsx:
+3️⃣ Configure Google Maps API Key
+For the map screen to work properly, you need to add your Google Maps API key in src/Screen/MapScreen.tsx:
 
-const googleMapsApiKey = 'TU_API_KEY_AQUI';
+const googleMapsApiKey = 'YOUR_API_KEY_HERE';
 
-4️⃣ Iniciar el proyecto
+4️⃣ Start the project
 npx expo start
 
-Para Android:
+for Android:
 npx expo start --android
 
-Para iOS:
+for iOS:
 npx expo start --ios
+
+
+Features
+
+Login/Register
+Search for Doctors and Patients (Search)
+Appointment Scheduling (Appointment)
+Viewing Locations on Map (MapScreen)
+Navigation between Screens
