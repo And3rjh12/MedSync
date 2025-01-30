@@ -18,8 +18,8 @@ const DoctorSearchScreen: React.FC = () => {
     }
 
     try {
-      console.log(`Haciendo solicitud a: http://192.168.1.13:8000/search_doctor/${encodedName}`);
-      const response = await axios.get(`192.168.1.13:8000/search_doctor/${encodedName}`);
+      console.log(`Haciendo solicitud a: http://10.119.130.38:8000/search_doctor/${encodedName}`);
+      const response = await axios.get(`http://10.119.130.38:8000/search_doctor/${encodedName}`);
       console.log(response);
 
       if (response.data.doctors && response.data.doctors.length > 0) {
@@ -30,6 +30,7 @@ const DoctorSearchScreen: React.FC = () => {
         setDoctorData(null);
       }
     } catch (err) {
+      console.log(err);
       setError("Hubo un error al buscar el doctor.");
       setDoctorData(null);
     }
@@ -39,7 +40,7 @@ const DoctorSearchScreen: React.FC = () => {
     if (!doctorData) return;
     
     try {
-      const response = await axios.delete(`http://192.168.1.13:8000/delete_doctor/${name}`);
+      const response = await axios.delete(`http://10.119.130.38:8000/delete_doctor/${name}`);
       if (response.status === 200) {
         setDoctorData(null); 
         setError("Doctor eliminado correctamente.");

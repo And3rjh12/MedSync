@@ -27,7 +27,7 @@ export default function RegisterScreen() {
   const [specialty, setSpecialty] = useState("");
   const [message, setMessage] = useState("");
 
-  const BASE_URL = "http://192.168.1.13:8000";
+  const BASE_URL = "http://192.168.100.47:8000";
 
   const handleRegister = async () => {
     try {
@@ -59,7 +59,7 @@ export default function RegisterScreen() {
           {/* MedSync Title */}
           <Text style={styles.medSyncTitle}>MedSync</Text>
 
-          {/* Mostrar mensaje solo si es una cadena de texto */}
+          {/*  */}
           {message && typeof message === "string" && (
             <Text style={styles.message}>{message}</Text>
           )}

@@ -23,31 +23,31 @@ interface HomeScreenProps {
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      {/* Botón para agendamiento */}
+      {/* Button m appointment */}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Agendamiento")}>
         <FontAwesome name="calendar" size={24} color="white" />
         <Text style={styles.buttonText}>Agendamiento</Text>
       </TouchableOpacity>
 
-      {/* Botón historial clínico */}
+      {/* Button hystorial medical */}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("HistorialClinico")}>
         <FontAwesome name="file" size={24} color="white" />
         <Text style={styles.buttonText}>Historial Clínico</Text>
       </TouchableOpacity>
 
-      {/* Botón buscar paciente */}
+      {/* Button search patient */}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BuscarPaciente")}>
         <FontAwesome name="search" size={24} color="white" />
         <Text style={styles.buttonText}>Buscar Paciente</Text>
       </TouchableOpacity>
 
-      {/* Botón buscar doctor */}
+      {/* Button m search doctor */}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BuscarDoctor")}>
         <FontAwesome name="search" size={24} color="white" />
         <Text style={styles.buttonText}>Buscar Doctor</Text>
       </TouchableOpacity>
 
-      {/* Botón mapa */}
+      {/* Button map */}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Encuentranos")}>
         <FontAwesome name="map-marker" size={24} color="white" />
         <Text style={styles.buttonText}>Encuéntranos Aquí</Text>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import axios from "axios"; 
-import styles from "./styles/patientSearchStyles"; // Importando los estilos
+import styles from "./styles/patientSearchStyles"; // import styles
 
 const PatientSearchScreen: React.FC = () => {
   const [name, setName] = useState("");
@@ -18,8 +18,8 @@ const PatientSearchScreen: React.FC = () => {
     }
 
     try {
-      console.log(`Haciendo solicitud a: http://192.168.1.13:8000/search_patient/${encodedName}`);
-      const response = await axios.get(`http://192.168.1.13:8000/search_patient/${encodedName}`);
+      console.log(`Haciendo solicitud a: http://192.168.100.47:8000/search_patient/${encodedName}`);
+      const response = await axios.get(`http://192.168.100.47:8000/search_patient/${encodedName}`);
       console.log(response);
 
       if (response.data.patients && response.data.patients.length > 0) {
@@ -39,7 +39,7 @@ const PatientSearchScreen: React.FC = () => {
     if (!patientData) return;
     
     try {
-      const response = await axios.delete(`http://192.168.1.13:8000/delete_patient/${name}`);
+      const response = await axios.delete(`http://192.168.100.47:8000/delete_patient/${name}`);
       if (response.status === 200) {
         setPatientData(null);
         setError("Paciente eliminado correctamente.");
