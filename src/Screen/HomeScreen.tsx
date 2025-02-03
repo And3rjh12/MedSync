@@ -1,17 +1,17 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { FontAwesome } from "@expo/vector-icons";  
-import styles from "./styles/homeStyles"; //import styles
+import styles from "./styles/homeStyles"; 
 
-// Definir la lista de parámetros del stack
 type RootStackParamList = {
   Home: undefined;
   Agendamiento: undefined;
-  HistorialClinico: undefined;
-  BuscarPaciente: undefined;
-  BuscarDoctor: undefined;
+  Profesionales: undefined;
+  Pacientes: undefined;
   Encuentranos: undefined;
+  Chat: undefined;
+  ChatBot: undefined;
 };
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
@@ -23,35 +23,45 @@ interface HomeScreenProps {
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      {/* Button m appointment */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Agendamiento")}>
-        <FontAwesome name="calendar" size={24} color="white" />
-        <Text style={styles.buttonText}>Agendamiento</Text>
+      {/* Header with logo and text */}
+      <View style={styles.header}>
+        <Image source={require("../../assets/logo1.png")} style={styles.logo} />
+        <View style={styles.headerTextContainer}>
+        </View>
+      </View>
+
+      {/* Button container in grid */}
+      <View style={styles.gridContainer}>
+        <TouchableOpacity style={styles.gridItem} onPress={() => navigation.navigate("Agendamiento")}>
+          <Image source={require("../../assets/calendar.jpg")} style={styles.iconImage} />
+          <Text style={styles.gridText}>Agendar citas médicas</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.gridItem} onPress={() => navigation.navigate("Profesionales")}>
+          <Image source={require("../../assets/stethoscope.jpg")} style={styles.iconImage} />
+          <Text style={styles.gridText}>Profesionales</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.gridItem} onPress={() => navigation.navigate("Pacientes")}>
+          <Image source={require("../../assets/patients.png")} style={styles.iconImage} />
+          <Text style={styles.gridText}>Pacientes</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.gridItem} onPress={() => navigation.navigate("Encuentranos")}>
+          <Image source={require("../../assets/map.png")} style={styles.iconImage} />
+          <Text style={styles.gridText}>Encuentranos</Text>
+        </TouchableOpacity>
+      </View>
+      {/* Chat button */}
+      <TouchableOpacity style={styles.chatButton} onPress={() => navigation.navigate("Chat")}>
+        <Text style={styles.chatButtonText}>Chat en tiempo real</Text>
+      </TouchableOpacity>
+      {/* Bot Floating Button */}
+      <TouchableOpacity style={styles.botButton} onPress={() => navigation.navigate("ChatBot")}>
+        <Image source={require("../../assets/bot.png")} style={styles.botImage} />
       </TouchableOpacity>
 
-      {/* Button hystorial medical */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("HistorialClinico")}>
-        <FontAwesome name="file" size={24} color="white" />
-        <Text style={styles.buttonText}>Historial Clínico</Text>
-      </TouchableOpacity>
 
-      {/* Button search patient */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BuscarPaciente")}>
-        <FontAwesome name="search" size={24} color="white" />
-        <Text style={styles.buttonText}>Buscar Paciente</Text>
-      </TouchableOpacity>
-
-      {/* Button m search doctor */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BuscarDoctor")}>
-        <FontAwesome name="search" size={24} color="white" />
-        <Text style={styles.buttonText}>Buscar Doctor</Text>
-      </TouchableOpacity>
-
-      {/* Button map */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Encuentranos")}>
-        <FontAwesome name="map-marker" size={24} color="white" />
-        <Text style={styles.buttonText}>Encuéntranos Aquí</Text>
-      </TouchableOpacity>
     </View>
   );
 };

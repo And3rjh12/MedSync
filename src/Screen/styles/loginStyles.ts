@@ -1,103 +1,112 @@
 import { StyleSheet } from "react-native";
 
-const loginStyles = StyleSheet.create({
+const homeStyles = StyleSheet.create({
+  // main screen container
   container: {
     flex: 1,
-    backgroundColor: "#f7f7f7",
-    justifyContent: "center",
-    padding: 16,
+    backgroundColor: "#E8F0F2",
+    alignItems: "center",
+    padding: 20,
   },
-  formContainer: {
+
+  // header with logo and text
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "#ffffff",
-    padding: 24,
+    width: "100%",
+    height: 120,
+    paddingVertical: 20,
     borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.2,
-    shadowRadius: 15,
-    elevation: 5,
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 50,
-    fontWeight: "900",
-    color: "#4CAF50",
-    marginBottom: 20,
-    fontFamily: "Roboto",
-  },
-  iconContainer: {
-    marginBottom: 20,
-    backgroundColor: "#f4f8f2",
-    borderRadius: 50,
-    padding: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.2,
-    shadowRadius: 15,
     elevation: 5,
   },
-  inputContainer: {
+
+  // style for the logo inside the header
+  logo: {
+    width: "90%",
+    height: "160%",
+    resizeMode: "contain",
+  },
+
+  // text container in the header
+  headerTextContainer: {
+    marginLeft: 15,
+  },
+
+  // container for grid elements
+  gridContainer: {
     flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 16,
-    borderWidth: 1.5,
-    borderColor: "#4CAF50",
-    borderRadius: 10,
-    paddingLeft: 15,
-    paddingRight: 10,
-    width: "100%",
-  },
-  input: {
-    flex: 1,
-    height: 50,
-    fontSize: 16,
-    color: "#333",
-  },
-  inputIcon: {
-    marginRight: 10,
-  },
-  button: {
-    backgroundColor: "#4CAF50",
-    paddingVertical: 12,
-    borderRadius: 10,
-    width: "100%",
-    alignItems: "center",
-    marginBottom: 16,
-    elevation: 5,
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  error: {
-    color: "red",
-    textAlign: "center",
-    marginBottom: 8,
-  },
-  success: {
-    color: "green",
-    textAlign: "center",
-    marginBottom: 8,
-  },
-  registerText: {
-    color: "#4CAF50",
-    textAlign: "center",
-    marginTop: 16,
-  },
-  socialIconsContainer: {
-    flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "center",
     width: "100%",
-    marginTop: 16,
+    marginTop: 20,
   },
-  socialIconButton: {
-    marginHorizontal: 16,
-    padding: 12,
-    borderRadius: 50,
-    backgroundColor: "#f4f8f2",
+
+  // style each item in the grid
+  gridItem: {
+    width: "42%",
+    height: 120,
+    backgroundColor: "#ffffff",
+    margin: 10,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 4,
+  },
+
+  // text inside grid elements
+  gridText: {
+    marginTop: 5,
+    fontSize: 14,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+
+  // icons inside grid elements
+  iconImage: {
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+  },
+
+  // chat button
+  chatButton: {
+    marginTop: 20,
+    backgroundColor: "#D1D1D1",
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 20,
+    alignItems: "center",
+    elevation: 2,
+  },
+
+  chatButtonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#000",
+  },
+
+  // floating button (bot)
+  botButton: {
+    position: "absolute",
+    bottom: 30,
+    right: 20,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
     elevation: 5,
+  },
+
+  // image inside floating button (bot)
+  botImage: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
   },
 });
 
-export default loginStyles;
+export default homeStyles;
