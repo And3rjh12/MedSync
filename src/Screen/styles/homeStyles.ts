@@ -1,14 +1,18 @@
 import { StyleSheet } from "react-native";
 
+
 const homeStyles = StyleSheet.create({
+  // main screen container
   container: {
     flex: 1,
     backgroundColor: "#E8F0F2",
     alignItems: "center",
     padding: 20,
   },
+
+  // header with logo and text
   header: {
-    flexDirection: "row", 
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#ffffff",
@@ -16,26 +20,22 @@ const homeStyles = StyleSheet.create({
     height: 120,
     paddingVertical: 20,
     borderRadius: 20,
-    elevation: 5, 
+    elevation: 5,
   },
+
+  // style for the logo inside the header
   logo: {
-    width: "90%",  
-    height: "160%",  
-    resizeMode: "contain", 
+    width: "90%",
+    height: "160%",
+    resizeMode: "contain",
   },
+
+  // text container in the header
   headerTextContainer: {
-    marginLeft: 15,  
+    marginLeft: 15,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#000",
-  },
-  subtitle: {
-    fontSize: 16,
-    color: "#6E6E6E",
-    letterSpacing: 1,
-  },
+
+  // container for grid elements
   gridContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -43,6 +43,8 @@ const homeStyles = StyleSheet.create({
     width: "100%",
     marginTop: 20,
   },
+
+  // style each item in the grid
   gridItem: {
     width: "42%",
     height: 120,
@@ -51,25 +53,25 @@ const homeStyles = StyleSheet.create({
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
-    elevation: 4,  
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    elevation: 4,
   },
+
+  // text inside grid elements
   gridText: {
     marginTop: 5,
     fontSize: 14,
     fontWeight: "bold",
     textAlign: "center",
   },
+
+  // icons inside grid elements
   iconImage: {
     width: 50,
     height: 50,
     resizeMode: "contain",
   },
 
-  
+  // chat button
   chatButton: {
     marginTop: 20,
     backgroundColor: "#D1D1D1",
@@ -79,11 +81,14 @@ const homeStyles = StyleSheet.create({
     alignItems: "center",
     elevation: 2,
   },
+
   chatButtonText: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#000",
   },
+
+  // floating button (bot)
   botButton: {
     position: "absolute",
     bottom: 30,
@@ -95,18 +100,14 @@ const homeStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     elevation: 5,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
   },
+
+  // image inside floating button (bot)
   botImage: {
     width: 60,
     height: 60,
     resizeMode: "contain",
   },
-
-  
 });
 
 export default homeStyles;

@@ -5,7 +5,6 @@ import LoginScreen from "./src/Screen/LoginScreen";
 import RegisterScreen from "./src/Screen/RegisterScreen";
 import HomeScreen from "./src/Screen/HomeScreen";
 import MapScreen from "./src/Screen/MapScreen";
-
 import AppointmentScreen from "./src/Screen/appointment ";
 import PatientSearchScreen from "./src/Screen/searchPatient";
 import DoctorSearchScreen from "./src/Screen/searchDoctor";
@@ -20,7 +19,7 @@ export default function App() {
         {/*login screen*/}
         <Stack.Screen
           name="Login"
-          component={HomeScreen}
+          component={LoginScreen}
           options={{ headerShown: false }} 
         />
         {/* register Screen */}

@@ -1,112 +1,110 @@
 import { StyleSheet } from "react-native";
 
-const homeStyles = StyleSheet.create({
-  // main screen container
+const loginStyles = StyleSheet.create({
+  //main screen container
   container: {
     flex: 1,
-    backgroundColor: "#E8F0F2",
+    backgroundColor: "#f7f7f7",
+    justifyContent: "center",
     alignItems: "center",
+    padding: 16,
+  },
+  // login Form Container
+  formContainer: {
+    backgroundColor: "#fff",
     padding: 20,
-  },
-
-  // header with logo and text
-  header: {
-    flexDirection: "row",
+    borderRadius: 10,
+    elevation: 3, // shadow
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#ffffff",
-    width: "100%",
-    height: 120,
-    paddingVertical: 20,
-    borderRadius: 20,
-    elevation: 5,
-  },
-
-  // style for the logo inside the header
-  logo: {
     width: "90%",
-    height: "160%",
-    resizeMode: "contain",
   },
 
-  // text container in the header
-  headerTextContainer: {
-    marginLeft: 15,
+  // title screem(MedSync)
+  title: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#4CAF50",
+    marginBottom: 15,
   },
-
-  // container for grid elements
-  gridContainer: {
+  //login icon container
+  iconContainer: {
+    marginBottom: 15,
+    borderRadius: 50,
+    padding: 12,
+    backgroundColor: "#e8f5e9", // Color de fondo suave para el icono
+  },
+  // Input container
+  inputContainer: {
     flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 16,
+    borderWidth: 1.5,
+    borderColor: "#4CAF50",
+    borderRadius: 10,
+    paddingLeft: 15,
+    paddingRight: 10,
     width: "100%",
-    marginTop: 20,
   },
-
-  // style each item in the grid
-  gridItem: {
-    width: "42%",
-    height: 120,
-    backgroundColor: "#ffffff",
-    margin: 10,
-    borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "center",
-    elevation: 4,
-  },
-
-  // text inside grid elements
-  gridText: {
-    marginTop: 5,
-    fontSize: 14,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-
-  // icons inside grid elements
-  iconImage: {
-    width: 50,
+  // text input field style
+  input: {
+    flex: 1,
     height: 50,
-    resizeMode: "contain",
-  },
-
-  // chat button
-  chatButton: {
-    marginTop: 20,
-    backgroundColor: "#D1D1D1",
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 20,
-    alignItems: "center",
-    elevation: 2,
-  },
-
-  chatButtonText: {
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#000",
+    color: "#333",
   },
-
-  // floating button (bot)
-  botButton: {
-    position: "absolute",
-    bottom: 30,
-    right: 20,
-    width: 70,
-    height: 70,
-    borderRadius: 35,
-    backgroundColor: "#ffffff",
+  //icon spacing within input
+  inputIcon: {
+    marginRight: 10,
+  },
+  // main login button
+  button: {
+    backgroundColor: "#4CAF50",
+    paddingVertical: 12,
+    borderRadius: 10,
+    width: "100%",
     alignItems: "center",
-    justifyContent: "center",
+    marginBottom: 16,
     elevation: 5,
   },
-
-  // image inside floating button (bot)
-  botImage: {
-    width: 60,
-    height: 60,
-    resizeMode: "contain",
+  //text inside the login button
+  buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  //error message
+  error: {
+    color: "red",
+    textAlign: "center",
+    marginBottom: 8,
+  },
+  //Success message
+  success: {
+    color: "green",
+    textAlign: "center",
+    marginBottom: 8,
+  },
+  //Redirect text to the registration screen
+  registerText: {
+    color: "#4CAF50",
+    textAlign: "center",
+    marginTop: 16,
+  },
+  //
+  socialIconsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "100%",
+    marginTop: 16,
+  },
+  //
+  socialIconButton: {
+    marginHorizontal: 16,
+    padding: 12,
+    borderRadius: 50,
+    backgroundColor: "#f4f8f2",
+    elevation: 5,
   },
 });
 
-export default homeStyles;
+export default loginStyles;
