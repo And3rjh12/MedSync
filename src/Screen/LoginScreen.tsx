@@ -27,7 +27,7 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
     setLoading(true);
     try {
       const response = await axios.post<LoginResponse>(
-        "http://10.119.130.38:8000/login", 
+        "http://192.168.100.47:8000/login", 
         { email, password }
       );
       setToken(response.data.token);

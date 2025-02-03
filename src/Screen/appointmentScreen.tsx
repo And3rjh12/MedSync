@@ -24,7 +24,7 @@ export default function AppointmentScreen() {
 
     setLoading(true);
     try {
-      await axios.post("http://10.119.130.38:8000/appointments", {
+      await axios.post("http:// 192.168.100.47:8000/appointments", {
         patient_id: patientId,
         doctor_id: doctorId,
         date,
