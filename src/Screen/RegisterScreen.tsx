@@ -1,19 +1,21 @@
 import React, { useState } from "react";
+import { Image } from "react-native";
+
 import {
   View,
   TextInput,
   Text,
   TouchableOpacity,
-  ScrollView,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Platform,
   Keyboard,
 } from "react-native";
+import Swiper from "react-native-swiper";
 import { Picker } from "@react-native-picker/picker";
 import { FontAwesome } from "@expo/vector-icons";
 import axios from "axios";
-import styles from "./styles/registerStyles"; // import styles
+import styles from "./styles/registerStyles"; // Importa tus estilos
 
 export default function RegisterScreen() {
   const [email, setEmail] = useState("");
@@ -40,11 +42,10 @@ export default function RegisterScreen() {
         age: age ? parseInt(age) : null,
         gender,
         phone,
-        specialty: role === "doctor" ? specialty : null,
+        ...(role === "doctor" ? { specialty } : {}),
       });
       setMessage(response.data.message || "User created successfully!");
     } catch (error: any) {
-      
       setMessage(error.response?.data?.detail || `Error: ${error.message}`);
     }
   };
@@ -55,169 +56,163 @@ export default function RegisterScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
-          {/* MedSync Title */}
-          <Text style={styles.medSyncTitle}>MedSync</Text>
+        <Swiper loop={false} showsPagination={true} dotColor="#ccc" activeDotColor="#4CAF50">
+          {/* Página 1: personal datas */}
+          
+          <View style={styles.slide}>
+          <View style={styles.header}>
+          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
+        <View style={styles.headerTextContainer}>
+        </View>
+      </View>
+            <Text style={styles.medSyncTitle}>MedSync</Text>
+            <Text style={styles.createAccountTitle}>Create Account</Text>
 
-          {/*  */}
-          {message && typeof message === "string" && (
-            <Text style={styles.message}>{message}</Text>
-          )}
-
-          {/* Create Account Title */}
-          <Text style={styles.createAccountTitle}>Create Account</Text>
-
-          {/* Email */}
-          <View style={styles.inputContainer}>
-            <FontAwesome
-              name="envelope"
-              size={20}
-              color="#4CAF50"
-              style={styles.inputIcon}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Email"
-              value={email}
-              onChangeText={setEmail}
-              placeholderTextColor="#a0a0a0"
-            />
-          </View>
-
-          {/* Password */}
-          <View style={styles.inputContainer}>
-            <FontAwesome
-              name="lock"
-              size={20}
-              color="#4CAF50"
-              style={styles.inputIcon}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              secureTextEntry
-              value={password}
-              onChangeText={setPassword}
-              placeholderTextColor="#a0a0a0"
-            />
-          </View>
-
-          {/* Name */}
-          <View style={styles.inputContainer}>
-            <FontAwesome
-              name="user"
-              size={20}
-              color="#4CAF50"
-              style={styles.inputIcon}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Name"
-              value={name}
-              onChangeText={setName}
-              placeholderTextColor="#a0a0a0"
-            />
-          </View>
-
-          {/* Last Name */}
-          <View style={styles.inputContainer}>
-            <FontAwesome
-              name="user"
-              size={20}
-              color="#4CAF50"
-              style={styles.inputIcon}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Last Name"
-              value={lastName}
-              onChangeText={setLastName}
-              placeholderTextColor="#a0a0a0"
-            />
-          </View>
-
-          {/* Role */}
-          <Text style={styles.label}>Role</Text>
-          <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={role}
-              onValueChange={(itemValue) => setRole(itemValue)}
-              style={styles.picker}
-            >
-              <Picker.Item label="Patient" value="patient" />
-              <Picker.Item label="Doctor" value="doctor" />
-            </Picker>
-          </View>
-
-          {/* Age */}
-          <View style={styles.inputContainer}>
-            <FontAwesome
-              name="calendar"
-              size={20}
-              color="#4CAF50"
-              style={styles.inputIcon}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Age"
-              value={age}
-              onChangeText={setAge}
-              keyboardType="numeric"
-              placeholderTextColor="#a0a0a0"
-            />
-          </View>
-
-          {/* Gender */}
-          <Text style={styles.label}>Gender</Text>
-          <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={gender}
-              onValueChange={(itemValue) => setGender(itemValue)}
-              style={styles.picker}
-            >
-              <Picker.Item label="Male" value="male" />
-              <Picker.Item label="Female" value="female" />
-            </Picker>
-          </View>
-
-          {/* Phone */}
-          <View style={styles.inputContainer}>
-            <FontAwesome
-              name="phone"
-              size={20}
-              color="#4CAF50"
-              style={styles.inputIcon}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Phone"
-              value={phone}
-              onChangeText={setPhone}
-              keyboardType="phone-pad"
-              placeholderTextColor="#a0a0a0"
-            />
-          </View>
-
-          {/* Specialty (only for doctors) */}
-          {role === "doctor" && (
             <View style={styles.inputContainer}>
-              <FontAwesome name="bed" size={20} color="#4CAF50" style={styles.inputIcon} />
+              <FontAwesome name="user" size={20} color="#4CAF50" style={styles.inputIcon} />
               <TextInput
                 style={styles.input}
-                placeholder="Specialty"
-                value={specialty}
-                onChangeText={setSpecialty}
+                placeholder="Name"
+                value={name}
+                onChangeText={setName}
                 placeholderTextColor="#a0a0a0"
               />
             </View>
-          )}
 
-          {/* Register Button */}
-          <TouchableOpacity style={styles.button} onPress={handleRegister}>
-            <Text style={styles.buttonText}>Register</Text>
-          </TouchableOpacity>
+            <View style={styles.inputContainer}>
+              <FontAwesome name="user" size={20} color="#4CAF50" style={styles.inputIcon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Last Name"
+                value={lastName}
+                onChangeText={setLastName}
+                placeholderTextColor="#a0a0a0"
+              />
+            </View>
 
-        </ScrollView>
+            <View style={styles.inputContainer}>
+              <FontAwesome name="envelope" size={20} color="#4CAF50" style={styles.inputIcon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Email"
+                value={email}
+                onChangeText={setEmail}
+                placeholderTextColor="#a0a0a0"
+              />
+            </View>
+          </View>
+
+          {/* Página 2: Security */}
+          <View style={styles.slide}>
+          <View style={styles.header}>
+          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
+        <View style={styles.headerTextContainer}>
+        </View>
+      </View>
+            <Text style={styles.createAccountTitle}>Security Information</Text>
+
+            <View style={styles.inputContainer}>
+              <FontAwesome name="lock" size={20} color="#4CAF50" style={styles.inputIcon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Password"
+                secureTextEntry
+                value={password}
+                onChangeText={setPassword}
+                placeholderTextColor="#a0a0a0"
+              />
+            </View>
+          </View>
+
+          {/* Páge 3: personality */}
+          <View style={styles.slide}>
+          <View style={styles.header}>
+          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
+        <View style={styles.headerTextContainer}>
+        </View>
+      </View>
+            <Text style={styles.createAccountTitle}>Personal Information</Text>
+
+            <Text style={styles.label}>Role</Text>
+            <View style={styles.pickerContainer}>
+              <Picker selectedValue={role} onValueChange={setRole} style={styles.picker}>
+                <Picker.Item label="Patient" value="patient" />
+                <Picker.Item label="Doctor" value="doctor" />
+              </Picker>
+            </View>
+
+            <View style={styles.inputContainer}>
+              <FontAwesome name="calendar" size={20} color="#4CAF50" style={styles.inputIcon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Age"
+                value={age}
+                onChangeText={setAge}
+                keyboardType="numeric"
+                placeholderTextColor="#a0a0a0"
+              />
+            </View>
+
+            <Text style={styles.label}>Gender</Text>
+            <View style={styles.pickerContainer}>
+              <Picker selectedValue={gender} onValueChange={setGender} style={styles.picker}>
+                <Picker.Item label="Male" value="male" />
+                <Picker.Item label="Female" value="female" />
+              </Picker>
+            </View>
+          </View>
+
+          {/* Páge 4: Contact */}
+          <View style={styles.slide}>
+          <View style={styles.header}>
+          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
+        <View style={styles.headerTextContainer}>
+        </View>
+      </View>
+            <Text style={styles.createAccountTitle}>Contact Information</Text>
+
+            <View style={styles.inputContainer}>
+              <FontAwesome name="phone" size={20} color="#4CAF50" style={styles.inputIcon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Phone"
+                value={phone}
+                onChangeText={setPhone}
+                keyboardType="phone-pad"
+                placeholderTextColor="#a0a0a0"
+              />
+            </View>
+
+            {role === "doctor" && (
+              <View style={styles.inputContainer}>
+                <FontAwesome name="bed" size={20} color="#4CAF50" style={styles.inputIcon} />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Specialty"
+                  value={specialty}
+                  onChangeText={setSpecialty}
+                  placeholderTextColor="#a0a0a0"
+                />
+              </View>
+            )}
+          </View>
+
+          {/* Páge 5: Finaly */}
+          <View style={styles.slide}>
+          <View style={styles.header}>
+          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
+        <View style={styles.headerTextContainer}>
+        </View>
+      </View>
+            <Text style={styles.createAccountTitle}>Finish Registration</Text>
+
+            <TouchableOpacity style={styles.button} onPress={handleRegister}>
+              <Text style={styles.buttonText}>Register</Text>
+            </TouchableOpacity>
+
+            {message && <Text style={styles.message}>{message}</Text>}
+          </View>
+        </Swiper>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

@@ -3,49 +3,60 @@ import { StyleSheet } from "react-native";
 const appointmentStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     padding: 20,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#fff',
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginVertical: 10,
   },
   input: {
-    width: "100%",
-    height: 50,
-    borderColor: "#ccc",
+    height: 40,
+    borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 8,
+    paddingLeft: 10,
     marginBottom: 15,
-    paddingHorizontal: 10,
-    fontSize: 16,
-    backgroundColor: "#fff",
-  },
-  button: {
-    width: "100%",
-    height: 50,
-    backgroundColor: "#007bff",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 8,
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  message: {
-    marginTop: 20,
-    color: "#ff0000",
-    fontSize: 16,
-    textAlign: "center",
   },
   picker: {
-    width: "100%",
-    height: 50,
-    borderColor: "#ccc",
+    height: 40,
+    borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 15,
-    backgroundColor: "#fff",
+  },
+  button: {
+    backgroundColor: '#4CAF50',
+    paddingVertical: 12,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  message: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'red',
+    marginTop: 15,
+  },
+  patientInfo: {
+    marginTop: 30,
+  },
+  text: {
+    fontSize: 30,
+    color: '#333',
+  },
+  datePickerButton: {
+    marginVertical: 10,
+  },
+  timePickerButton: {
+    marginVertical: 10,
   },
 });
+
 export default appointmentStyles;
