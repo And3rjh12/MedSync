@@ -62,7 +62,9 @@ const homeStyles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
     textAlign: "center",
+    color: "#000000",
   },
+  
 
   // icons inside grid elements
   iconImage: {
@@ -86,6 +88,14 @@ const homeStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#000",
+  },
+  skeletonGridItem: {
+    width: "48%", // Tamaño para que entren dos en una fila
+    height: 180,
+    backgroundColor: "#E0E0E0",
+    borderRadius: 10,
+    marginBottom: 15,
+    padding: 10,
   },
 
   // floating button (bot)
