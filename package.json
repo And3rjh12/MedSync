@@ -32,6 +32,7 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mapbox/polyline": "^1.2.1",
     "@react-native-community/datetimepicker": "^8.2.0",
     "@react-native-community/slider": "^4.5.5",
     "@react-native-picker/picker": "^2.11.0",
@@ -48,6 +49,7 @@
     "react-native-swiper": "^1.6.0"
   },
   "devDependencies": {
+    "@types/mapbox__polyline": "^1.0.5",
     "@types/react-native-snap-carousel": "^3.8.11",
     "typescript": "^5.3.3"
   }
