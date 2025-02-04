@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-const mapstyles = StyleSheet.create({
+const mapStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -9,13 +9,19 @@ const mapstyles = StyleSheet.create({
   },
   infoContainer: {
     padding: 10,
-    backgroundColor: '#f8f8f8',
-    textAlign: 'center',
+    backgroundColor: "#f8f8f8",
+    textAlign: "center",
   },
   infoText: {
     fontSize: 16,
-    color: '#333',
+    color: "#333",
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffffff",
   },
 });
 
-export default mapstyles;
+export default mapStyles;
