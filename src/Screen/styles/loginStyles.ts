@@ -98,6 +98,28 @@ const loginStyles = StyleSheet.create({
     backgroundColor: "#f4f8f2",
     elevation: 5,
   },
+  biometricButton: {
+    marginTop: 20,
+    backgroundColor: "#4CAF50",
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+  },
+  biometricButtonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#fff",
+    marginLeft: 10,
+  },
+  
 });
 
 export default loginStyles;
