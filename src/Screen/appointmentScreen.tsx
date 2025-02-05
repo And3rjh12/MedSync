@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { 
-  View, TextInput, Text, TouchableOpacity, ActivityIndicator, StyleSheet 
+  View, TextInput, Text, TouchableOpacity, ActivityIndicator, StyleSheet , StatusBar 
 } from "react-native";
 import axios from "axios";
+import { useTheme } from "../context/ThemeContext";
 import DateTimePicker from '@react-native-community/datetimepicker'; // For the calendar and clock
 
 interface Patient {
@@ -27,6 +28,7 @@ export default function AppointmentScreen() {
 
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
   const [showTimePicker, setShowTimePicker] = useState<boolean>(false);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   // Load patient data (here you can simulate that the patient is already logged in)
   useEffect(() => {
@@ -81,29 +83,33 @@ export default function AppointmentScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    
+    <View style={[styles.container, isDarkMode && styles.darkContainer]}>
+      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
+
       {/* Display patient data */}
       {patientData && (
-        <View style={styles.patientInfo}>
-          <TextInput style={styles.input} value={patientData.name} editable={false} placeholder="First Name" />
-          <TextInput style={styles.input} value={patientData.last_name} editable={false} placeholder="Last Name" />
-          <TextInput style={styles.input} value={patientData.age.toString()} editable={false} placeholder="Age" />
-          <TextInput style={styles.input} value={patientData.email} editable={false} placeholder="Email" />
+       <View style={styles.patientInfo}>
+          <TextInput style={[styles.input, isDarkMode && styles.darkInput]} value={patientData.name} editable={false} placeholder="First Name" placeholderTextColor={isDarkMode ? "#bbb" : "#555"} />
+          <TextInput style={[styles.input, isDarkMode && styles.darkInput]} value={patientData.last_name} editable={false} placeholder="Last Name" placeholderTextColor={isDarkMode ? "#bbb" : "#555"} />
+          <TextInput style={[styles.input, isDarkMode && styles.darkInput]} value={patientData.age.toString()} editable={false} placeholder="Age" placeholderTextColor={isDarkMode ? "#bbb" : "#555"} />
+          <TextInput style={[styles.input, isDarkMode && styles.darkInput]} value={patientData.email} editable={false} placeholder="Email" placeholderTextColor={isDarkMode ? "#bbb" : "#555"} />
         </View>
       )}
 
       {/* Doctor Selector */}
-      <Text style={styles.label}>Select Doctor</Text>
+      <Text style={[styles.label, isDarkMode && styles.darkText]}>Select Doctor</Text>
       <TextInput 
-        style={styles.input} 
+        style={[styles.input, isDarkMode && styles.darkInput]} 
         placeholder="Doctor ID" 
+        placeholderTextColor={isDarkMode ? "#bbb" : "#555"}
         value={doctorId} 
         onChangeText={setDoctorId} 
       />
 
       {/* Date Selection */}
       <TouchableOpacity onPress={() => setShowDatePicker(true)} style={styles.datePickerButton}>
-        <Text style={styles.label}>Select Date: {date.toLocaleDateString()}</Text>
+        <Text style={[styles.label, isDarkMode && styles.darkText]}>Select Date: {date.toLocaleDateString()}</Text>
       </TouchableOpacity>
       {showDatePicker && (
         <DateTimePicker
@@ -119,7 +125,7 @@ export default function AppointmentScreen() {
 
       {/* Time Selection */}
       <TouchableOpacity onPress={() => setShowTimePicker(true)} style={styles.timePickerButton}>
-        <Text style={styles.label}>Select Time: {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>
+        <Text style={[styles.label, isDarkMode && styles.darkText]}>Select Time: {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>
       </TouchableOpacity>
       {showTimePicker && (
         <DateTimePicker
@@ -134,14 +140,14 @@ export default function AppointmentScreen() {
       )}
 
       {/* Other fields */}
-      <TextInput style={styles.input} placeholder="Appointment Reason" value={reason} onChangeText={setReason} />
-      <TextInput style={styles.input} placeholder="Appointment Cost" value={cost} onChangeText={setCost} keyboardType="numeric" />
+      <TextInput style={[styles.input, isDarkMode && styles.darkInput]} placeholder="Appointment Reason" value={reason} onChangeText={setReason} placeholderTextColor={isDarkMode ? "#bbb" : "#555"} />
+      <TextInput style={[styles.input, isDarkMode && styles.darkInput]} placeholder="Appointment Cost" value={cost} onChangeText={setCost} keyboardType="numeric" placeholderTextColor={isDarkMode ? "#bbb" : "#555"} />
 
-      <TouchableOpacity style={styles.button} onPress={handleAppointmentSubmit} disabled={loading}>
-        {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Book Appointment</Text>}
+      <TouchableOpacity style={[styles.button, isDarkMode && styles.darkButton]} onPress={handleAppointmentSubmit} disabled={loading}>
+        {loading ? <ActivityIndicator color="#fff" /> : <Text style={[styles.buttonText, isDarkMode && styles.darkButtonText]}>Book Appointment</Text>}
       </TouchableOpacity>
 
-      {message && <Text style={styles.message}>{message}</Text>}
+      {message && <Text style={[styles.message, isDarkMode && styles.darkText]}>{message}</Text>}
     </View>
   );
 }
@@ -150,46 +156,54 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
+  },
+  darkContainer: {
+    backgroundColor: "#121212",
   },
   label: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginVertical: 10,
+  },
+  darkText: {
+    color: "#fff",
   },
   input: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     borderRadius: 8,
     paddingLeft: 10,
     marginBottom: 15,
+    color: "#000",
+  },
+  darkInput: {
+    backgroundColor: "#333",
+    color: "#fff",
+    borderColor: "#555",
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: "#4CAF50",
     paddingVertical: 12,
     borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  darkButton: {
+    backgroundColor: "#1e8e3e",
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
-  message: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'red',
-    marginTop: 15,
+  darkButtonText: {
+    color: "#fff",
   },
-  patientInfo: {
-    marginTop: 20,
-  },
-  datePickerButton: {
-    marginVertical: 10,
-  },
-  timePickerButton: {
-    marginVertical: 10,
+  themeToggle: {
+    position: "absolute",
+    top: 10,
+    right: 10,
   },
 });

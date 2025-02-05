@@ -5,36 +5,47 @@ const homeStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#E8F0F2",
     alignItems: "center",
-    padding: 20,
+    padding: 14,
+  },
+  darkContainer: {
+    backgroundColor: "#121212",
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#ffffff",
-    width: "100%",
-    height: 120,
+    width: "105%",
+    height: 119,
     paddingVertical: 20,
     borderRadius: 20,
     elevation: 5,
+  },
+  darkHeader: {
+    backgroundColor: "#1f1f1f",
   },
   logo: {
     width: "90%",
     height: "160%",
     resizeMode: "contain",
-  },
-  headerTextContainer: {
-    marginLeft: 15,
+    backgroundColor: "#1f1f1f",  ///aqui para aplicar el dark mode en home
   },
   title: {
     fontSize: 28,
     fontWeight: "bold",
     color: "#000",
+    
+  },
+  darkText: {
+    color: "#fff",
   },
   subtitle: {
     fontSize: 16,
     color: "#6E6E6E",
     letterSpacing: 1,
+  },
+  darkSubtitle: {
+    color: "#aaa",
   },
   gridContainer: {
     flexDirection: "row",
@@ -42,6 +53,7 @@ const homeStyles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     marginTop: 20,
+    
   },
   gridItem: {
     width: "42%",
@@ -57,16 +69,24 @@ const homeStyles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
+  darkGridItem: {
+    backgroundColor: "#333",
+  },
   gridText: {
     marginTop: 5,
     fontSize: 14,
     fontWeight: "bold",
     textAlign: "center",
+    color: "#000",
+  },
+  darkGridText: {
+    color: "#fff",
   },
   iconImage: {
     width: 50,
     height: 50,
     resizeMode: "contain",
+    
   },
   
   weatherContainer: {
@@ -82,11 +102,17 @@ const homeStyles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  darkWeatherContainer: {
+    backgroundColor: "#222",
+  },
   weatherTitle: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
     color: "#333",
+  },
+  darkWeatherTitle: {
+    color: "#fff",
   },
   weatherList: {
     alignItems: "center",
@@ -98,6 +124,9 @@ const homeStyles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 10,
     width: 120,
+  },
+  darkWeatherCard: {
+    backgroundColor: "#444",
   },
   weatherDate: {
     fontSize: 14,
@@ -129,10 +158,16 @@ const homeStyles = StyleSheet.create({
     alignItems: "center",
     elevation: 2,
   },
+  darkChatButton: {
+    backgroundColor: "#444",
+  },
   chatButtonText: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#000",
+  },
+  darkChatButtonText: {
+    color: "#fff",
   },
   botButton: {
     position: "absolute",
@@ -150,10 +185,14 @@ const homeStyles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
   },
+  darkBotButton: {
+    backgroundColor: "#333",
+  },
   botImage: {
     width: 60,
     height: 60,
     resizeMode: "contain",
   },
 });
+
 export default homeStyles;

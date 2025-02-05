@@ -3,96 +3,142 @@ import { StyleSheet } from "react-native";
 const registerStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#f7f7f7",
+    justifyContent: "center",
+    padding: 16,
+  },
+  darkContainer: {
+    backgroundColor: "#121212",
   },
   slide: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
+    paddingHorizontal: 20,
+  },
+  darkSlide: {
+    backgroundColor: "#121212",
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#ffffff",
+    width: "100%",
+    height: 100,
+    paddingVertical: 20,
+    borderRadius: 20,
+    elevation: 5,
+  },
+  darkHeader: {
+    backgroundColor: "#1e1e1e",
+  },
+  logo: {
+    width: "90%",
+    height: "100%",
+    resizeMode: "contain",
   },
   medSyncTitle: {
-    fontSize: 28,
+    fontSize: 36,
     fontWeight: "bold",
     color: "#4CAF50",
     marginBottom: 10,
   },
+  darkText: {
+    color: "#ffffff",
+  },
   createAccountTitle: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "bold",
+    color: "#333",
     marginBottom: 20,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 15,
+    marginBottom: 16,
+    borderWidth: 1.5,
+    borderColor: "#4CAF50",
+    borderRadius: 10,
+    paddingLeft: 15,
+    paddingRight: 10,
     width: "100%",
+  },
+  darkInputContainer: {
+    borderColor: "#66BB6A",
+  },
+  input: {
+    flex: 1,
+    height: 50,
+    fontSize: 16,
+    color: "#333",
+  },
+  darkInput: {
+    color: "#ffffff",
+    backgroundColor: "#1e1e1e",
   },
   inputIcon: {
     marginRight: 10,
   },
-  input: {
-    flex: 1,
-    height: 40,
-    color: "#333",
+  picker: {
+    width: "100%",
+    height: 50,
+    backgroundColor: "#ffffff",
+    borderRadius: 10,
+    marginBottom: 16,
+  },
+  darkPicker: {
+    backgroundColor: "#1e1e1e",
+    color: "#ffffff",
   },
   button: {
     backgroundColor: "#4CAF50",
-    padding: 15,
-    borderRadius: 8,
-    marginTop: 20,
-    width: "80%",
+    paddingVertical: 12,
+    borderRadius: 10,
+    width: "100%",
     alignItems: "center",
+    marginBottom: 16,
+    elevation: 5,
+  },
+  darkButton: {
+    backgroundColor: "#388E3C",
   },
   buttonText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
   },
+  darkButtonText: {
+    color: "#ffffff",
+  },
   message: {
+    fontSize: 16,
+    fontWeight: "bold",
     color: "red",
-    marginTop: 10,
+    marginTop: 15,
+    textAlign: "center",
+  },
+  themeToggle: {
+    position: "absolute",
+    top: 40,
+    right: 20,
+    backgroundColor: "#eeeeee",
+    padding: 10,
+    borderRadius: 50,
+    elevation: 3,
+  },
+  darkThemeToggle: {
+    backgroundColor: "#333333",
   },
   label: {
     fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 5,
+    color: "#444",
+    marginBottom: 10,
   },
-  pickerContainer: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    marginBottom: 15,
-    width: "100%",
-  },
-  picker: {
-    height: 50,
-    width: "100%",
-  },
-  header: {
-    flexDirection: "row", 
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#ffffff",
-    width: "100%",
-    height: 120,
-    paddingVertical: 20,
-    borderRadius: 20,
-    elevation: 5, 
-  },
-  logo: {
-    width: "90%",  
-    height: "160%",  
-    resizeMode: "contain", 
-  },
-  headerTextContainer: {
-    marginLeft: 15,  
+  darkLabel: {
+    color: "#ffffff",
   },
 });
-
 
 export default registerStyles;

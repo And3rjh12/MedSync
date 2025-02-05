@@ -1,21 +1,11 @@
 import React, { useState } from "react";
-import { Image } from "react-native";
-
-import {
-  View,
-  TextInput,
-  Text,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Platform,
-  Keyboard,
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard, StatusBar, Image } from "react-native";
 import Swiper from "react-native-swiper";
 import { Picker } from "@react-native-picker/picker";
 import { FontAwesome } from "@expo/vector-icons";
 import axios from "axios";
 import styles from "../styles/registerStyles"; // Importa tus estilos
+import { useTheme } from "../context/ThemeContext";
 
 export default function RegisterScreen() {
   const [email, setEmail] = useState("");
@@ -28,6 +18,7 @@ export default function RegisterScreen() {
   const [phone, setPhone] = useState("");
   const [specialty, setSpecialty] = useState("");
   const [message, setMessage] = useState("");
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const BASE_URL = "http://192.168.100.47:8000";
 
@@ -51,166 +42,95 @@ export default function RegisterScreen() {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
+    <KeyboardAvoidingView style={[styles.container, isDarkMode && styles.darkContainer]} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
+
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Swiper loop={false} showsPagination={true} dotColor="#ccc" activeDotColor="#4CAF50">
-          {/* Página 1: personal datas */}
           
-          <View style={styles.slide}>
-          <View style={styles.header}>
-          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
-        <View style={styles.headerTextContainer}>
-        </View>
-      </View>
-            <Text style={styles.medSyncTitle}>MedSync</Text>
-            <Text style={styles.createAccountTitle}>Create Account</Text>
+          {/* 🔹 Página 1: Datos personales */}
+          <View style={[styles.slide, isDarkMode && styles.darkSlide]}>
+            <View style={[styles.header, isDarkMode && styles.darkHeader]}>
+              <Image source={require("../../assets/logo1.png")} style={styles.logo} />
+            </View>
+        
+            <Text style={[styles.medSyncTitle, isDarkMode && styles.darkText]}>MedSync</Text>
+            <Text style={[styles.createAccountTitle, isDarkMode && styles.darkText]}>Crear Cuenta</Text>
 
             <View style={styles.inputContainer}>
               <FontAwesome name="user" size={20} color="#4CAF50" style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="Name"
-                value={name}
-                onChangeText={setName}
-                placeholderTextColor="#a0a0a0"
-              />
+              <TextInput style={[styles.input, isDarkMode && styles.darkInput]} placeholder="Nombre" placeholderTextColor={isDarkMode ? "#aaa" : "#000"} value={name} onChangeText={setName} />
             </View>
 
             <View style={styles.inputContainer}>
               <FontAwesome name="user" size={20} color="#4CAF50" style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="Last Name"
-                value={lastName}
-                onChangeText={setLastName}
-                placeholderTextColor="#a0a0a0"
-              />
+              <TextInput style={[styles.input, isDarkMode && styles.darkInput]} placeholder="Apellido" placeholderTextColor={isDarkMode ? "#aaa" : "#000"} value={lastName} onChangeText={setLastName} />
             </View>
 
             <View style={styles.inputContainer}>
               <FontAwesome name="envelope" size={20} color="#4CAF50" style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="Email"
-                value={email}
-                onChangeText={setEmail}
-                placeholderTextColor="#a0a0a0"
-              />
+              <TextInput style={[styles.input, isDarkMode && styles.darkInput]} placeholder="Correo" placeholderTextColor={isDarkMode ? "#aaa" : "#000"} value={email} onChangeText={setEmail} />
             </View>
           </View>
 
-          {/* Página 2: Security */}
-          <View style={styles.slide}>
-          <View style={styles.header}>
-          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
-        <View style={styles.headerTextContainer}>
-        </View>
-      </View>
-            <Text style={styles.createAccountTitle}>Security Information</Text>
+          {/* 🔹 Página 2: Seguridad */}
+          <View style={[styles.slide, isDarkMode && styles.darkSlide]}>
+            <Text style={[styles.createAccountTitle, isDarkMode && styles.darkText]}>Información de Seguridad</Text>
 
             <View style={styles.inputContainer}>
               <FontAwesome name="lock" size={20} color="#4CAF50" style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="Password"
-                secureTextEntry
-                value={password}
-                onChangeText={setPassword}
-                placeholderTextColor="#a0a0a0"
-              />
+              <TextInput style={[styles.input, isDarkMode && styles.darkInput]} placeholder="Contraseña" placeholderTextColor={isDarkMode ? "#aaa" : "#000"} secureTextEntry value={password} onChangeText={setPassword} />
             </View>
           </View>
 
-          {/* Páge 3: personality */}
-          <View style={styles.slide}>
-          <View style={styles.header}>
-          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
-        <View style={styles.headerTextContainer}>
-        </View>
-      </View>
-            <Text style={styles.createAccountTitle}>Personal Information</Text>
+          {/* 🔹 Página 3: Datos Personales */}
+          <View style={[styles.slide, isDarkMode && styles.darkSlide]}>
+            <Text style={[styles.createAccountTitle, isDarkMode && styles.darkText]}>Datos Personales</Text>
 
-            <Text style={styles.label}>Role</Text>
-            <View style={styles.pickerContainer}>
-              <Picker selectedValue={role} onValueChange={setRole} style={styles.picker}>
-                <Picker.Item label="Patient" value="patient" />
-                <Picker.Item label="Doctor" value="doctor" />
-              </Picker>
-            </View>
+            <Text style={[styles.label, isDarkMode && styles.darkText]}>Rol</Text>
+            <Picker selectedValue={role} onValueChange={setRole} style={[styles.picker, isDarkMode && styles.darkPicker]}>
+              <Picker.Item label="Paciente" value="patient" />
+              <Picker.Item label="Doctor" value="doctor" />
+            </Picker>
 
             <View style={styles.inputContainer}>
               <FontAwesome name="calendar" size={20} color="#4CAF50" style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="Age"
-                value={age}
-                onChangeText={setAge}
-                keyboardType="numeric"
-                placeholderTextColor="#a0a0a0"
-              />
+              <TextInput style={[styles.input, isDarkMode && styles.darkInput]} placeholder="Edad" keyboardType="numeric" placeholderTextColor={isDarkMode ? "#aaa" : "#000"} value={age} onChangeText={setAge} />
             </View>
 
-            <Text style={styles.label}>Gender</Text>
-            <View style={styles.pickerContainer}>
-              <Picker selectedValue={gender} onValueChange={setGender} style={styles.picker}>
-                <Picker.Item label="Male" value="male" />
-                <Picker.Item label="Female" value="female" />
-              </Picker>
-            </View>
+            <Text style={[styles.label, isDarkMode && styles.darkText]}>Género</Text>
+            <Picker selectedValue={gender} onValueChange={setGender} style={[styles.picker, isDarkMode && styles.darkPicker]}>
+              <Picker.Item label="Masculino" value="male" />
+              <Picker.Item label="Femenino" value="female" />
+            </Picker>
           </View>
 
-          {/* Páge 4: Contact */}
-          <View style={styles.slide}>
-          <View style={styles.header}>
-          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
-        <View style={styles.headerTextContainer}>
-        </View>
-      </View>
-            <Text style={styles.createAccountTitle}>Contact Information</Text>
+          {/* 🔹 Página 4: Contacto */}
+          <View style={[styles.slide, isDarkMode && styles.darkSlide]}>
+            <Text style={[styles.createAccountTitle, isDarkMode && styles.darkText]}>Información de Contacto</Text>
 
             <View style={styles.inputContainer}>
               <FontAwesome name="phone" size={20} color="#4CAF50" style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="Phone"
-                value={phone}
-                onChangeText={setPhone}
-                keyboardType="phone-pad"
-                placeholderTextColor="#a0a0a0"
-              />
+              <TextInput style={[styles.input, isDarkMode && styles.darkInput]} placeholder="Teléfono" keyboardType="phone-pad" placeholderTextColor={isDarkMode ? "#aaa" : "#000"} value={phone} onChangeText={setPhone} />
             </View>
 
             {role === "doctor" && (
               <View style={styles.inputContainer}>
-                <FontAwesome name="bed" size={20} color="#4CAF50" style={styles.inputIcon} />
-                <TextInput
-                  style={styles.input}
-                  placeholder="Specialty"
-                  value={specialty}
-                  onChangeText={setSpecialty}
-                  placeholderTextColor="#a0a0a0"
-                />
+                <FontAwesome name="stethoscope" size={20} color="#4CAF50" style={styles.inputIcon} />
+                <TextInput style={[styles.input, isDarkMode && styles.darkInput]} placeholder="Especialidad" placeholderTextColor={isDarkMode ? "#aaa" : "#000"} value={specialty} onChangeText={setSpecialty} />
               </View>
             )}
           </View>
 
-          {/* Páge 5: Finaly */}
-          <View style={styles.slide}>
-          <View style={styles.header}>
-          <Image source={require("../../assets/logo1.png")} style={styles.logo} />
-        <View style={styles.headerTextContainer}>
-        </View>
-      </View>
-            <Text style={styles.createAccountTitle}>Finish Registration</Text>
+          {/* 🔹 Página 5: Confirmación */}
+          <View style={[styles.slide, isDarkMode && styles.darkSlide]}>
+            <Text style={[styles.createAccountTitle, isDarkMode && styles.darkText]}>Finalizar Registro</Text>
 
-            <TouchableOpacity style={styles.button} onPress={handleRegister}>
-              <Text style={styles.buttonText}>Register</Text>
+            <TouchableOpacity style={[styles.button, isDarkMode && styles.darkButton]} onPress={handleRegister}>
+              <Text style={[styles.buttonText, isDarkMode && styles.darkButtonText]}>Registrarse</Text>
             </TouchableOpacity>
 
-            {message && <Text style={styles.message}>{message}</Text>}
+            {message && <Text style={[styles.message, isDarkMode && styles.darkText]}>{message}</Text>}
           </View>
         </Swiper>
       </TouchableWithoutFeedback>

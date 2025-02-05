@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StatusBar } from "react-native";
 import axios from "axios"; 
-import styles from "../styles/doctorSearchStyles"; // import styles
+import styles from "../styles/doctorSearchStyles";
+import { useTheme } from "../context/ThemeContext";  // import styles
 
 const DoctorSearchScreen: React.FC = () => {
   const [name, setName] = useState("");
   const [doctorData, setDoctorData] = useState<any>(null);
   const [error, setError] = useState<string>("");
 
+  const { isDarkMode, toggleTheme } = useTheme();
   const handleSearch = async () => {
     const encodedName = encodeURIComponent(name.trim());
 
@@ -51,38 +53,39 @@ const DoctorSearchScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Buscar Doctor</Text>
+    <View style={[styles.container, isDarkMode && styles.darkContainer]}>
+      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
+      <Text style={[styles.title, isDarkMode && styles.darkText]}>Buscar Doctor</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, isDarkMode && styles.darkInput]}
         value={name}
         onChangeText={setName}
         placeholder="Ingrese el nombre del doctor"
-        placeholderTextColor="#777"
+        placeholderTextColor={isDarkMode ? "#bbb" : "#777"}
       />
-      <TouchableOpacity style={styles.button} onPress={handleSearch}>
-        <Text style={styles.buttonText}>Buscar</Text>
+<TouchableOpacity style={[styles.button, isDarkMode && styles.darkButton]} onPress={handleSearch}>
+        <Text style={[styles.buttonText, isDarkMode && styles.darkButtonText]}>Buscar</Text>
       </TouchableOpacity>
 
-      {error && <Text style={styles.error}>{error}</Text>}
+      {error && <Text style={[styles.error, isDarkMode && styles.darkText]}>{error}</Text>}
 
       {doctorData && (
-        <View style={styles.doctorDetails}>
-          <Text style={styles.doctorText}>
-            <Text style={styles.bold}>Nombre:</Text> {doctorData.name} {doctorData.last_name}
+        <View style={[styles.doctorDetails, isDarkMode && styles.darkDoctorDetails]}>
+          <Text style={[styles.doctorText, isDarkMode && styles.darkText]}>
+            <Text style={[styles.bold, isDarkMode && styles.darkText]}>Nombre:</Text> {doctorData.name} {doctorData.last_name}
           </Text>
-          <Text style={styles.doctorText}>
-            <Text style={styles.bold}>Correo:</Text> {doctorData.email}
+          <Text style={[styles.doctorText, isDarkMode && styles.darkText]}>
+            <Text style={[styles.bold, isDarkMode && styles.darkText]}>Correo:</Text> {doctorData.email}
           </Text>
-          <Text style={styles.doctorText}>
-            <Text style={styles.bold}>Especialidad:</Text> {doctorData.specialty}
+          <Text style={[styles.doctorText, isDarkMode && styles.darkText]}>
+            <Text style={[styles.bold, isDarkMode && styles.darkText]}>Especialidad:</Text> {doctorData.specialty}
           </Text>
-          <Text style={styles.doctorText}>
-            <Text style={styles.bold}>Teléfono:</Text> {doctorData.phone}
+          <Text style={[styles.doctorText, isDarkMode && styles.darkText]}>
+            <Text style={[styles.bold, isDarkMode && styles.darkText]}>Teléfono:</Text> {doctorData.phone}
           </Text>
-          
-          <TouchableOpacity style={styles.deleteButton} onPress={handleDelete}>
-            <Text style={styles.deleteButtonText}>Eliminar Doctor</Text>
+
+          <TouchableOpacity style={[styles.deleteButton, isDarkMode && styles.darkDeleteButton]} onPress={handleDelete}>
+            <Text style={[styles.deleteButtonText, isDarkMode && styles.darkButtonText]}>Eliminar Doctor</Text>
           </TouchableOpacity>
         </View>
       )}
