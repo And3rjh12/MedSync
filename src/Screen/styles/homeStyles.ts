@@ -8,7 +8,7 @@ const homeStyles = StyleSheet.create({
     padding: 20,
   },
   header: {
-    flexDirection: "row", 
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#ffffff",
@@ -16,15 +16,15 @@ const homeStyles = StyleSheet.create({
     height: 120,
     paddingVertical: 20,
     borderRadius: 20,
-    elevation: 5, 
+    elevation: 5,
   },
   logo: {
-    width: "90%",  
-    height: "160%",  
-    resizeMode: "contain", 
+    width: "90%",
+    height: "160%",
+    resizeMode: "contain",
   },
   headerTextContainer: {
-    marginLeft: 15,  
+    marginLeft: 15,
   },
   title: {
     fontSize: 28,
@@ -51,7 +51,7 @@ const homeStyles = StyleSheet.create({
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
-    elevation: 4,  
+    elevation: 4,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.2,
@@ -68,7 +68,57 @@ const homeStyles = StyleSheet.create({
     height: 50,
     resizeMode: "contain",
   },
-
+  
+  weatherContainer: {
+    backgroundColor: "#ffffff",
+    padding: 15,
+    borderRadius: 15,
+    width: "90%",
+    alignItems: "center",
+    marginTop: 20,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  weatherTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "#333",
+  },
+  weatherList: {
+    alignItems: "center",
+  },
+  weatherCard: {
+    backgroundColor: "#007bff",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginHorizontal: 10,
+    width: 120,
+  },
+  weatherDate: {
+    fontSize: 14,
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  weatherTemp: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#ffdd57",
+  },
+  weatherIcon: {
+    width: 50,
+    height: 50,
+  },
+  weatherDesc: {
+    fontSize: 12,
+    color: "#fff",
+    textAlign: "center",
+    textTransform: "capitalize",
+  },
   
   chatButton: {
     marginTop: 20,
@@ -105,8 +155,5 @@ const homeStyles = StyleSheet.create({
     height: 60,
     resizeMode: "contain",
   },
-
-  
 });
-
 export default homeStyles;
