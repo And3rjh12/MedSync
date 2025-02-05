@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { FontAwesome } from "@expo/vector-icons";  
-import styles from "./styles/patientScreen"; // import styles
+import styles from "../styles/patientScreen"; // import styles
 
 
 type RootStackParamList = {

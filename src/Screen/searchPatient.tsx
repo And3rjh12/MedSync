@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import axios from "axios"; 
-import styles from "./styles/patientSearchStyles"; // import styles
+import styles from "../styles/patientSearchStyles"; // import styles
 
 const PatientSearchScreen: React.FC = () => {
   const [name, setName] = useState("");

@@ -6,7 +6,7 @@ import {
 import * as LocalAuthentication from "expo-local-authentication";
 import axios from "axios";
 import { FontAwesome } from "@expo/vector-icons";
-import styles from "./styles/loginStyles";
+import styles from "../styles/loginStyles";
 import { MaterialIcons } from "@expo/vector-icons";
 interface LoginResponse {
   token: string;

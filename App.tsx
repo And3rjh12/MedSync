@@ -1,3 +1,5 @@
+import 'core-js/stable';
+import 'react-native-polyfill-globals/auto'; 
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -8,6 +10,8 @@ import MapScreen from "./src/Screen/MapScreen";
 import AppointmentScreen from "./src/Screen/appointmentScreen";
 import PatientSearchScreen from "./src/Screen/searchPatient";
 import DoctorSearchScreen from "./src/Screen/searchDoctor";
+import 'setimmediate';
+
 
 const Stack = createStackNavigator();
 export default function App() {

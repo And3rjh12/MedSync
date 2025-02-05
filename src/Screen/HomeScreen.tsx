@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image, FlatList, ActivityIndicator } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import styles from "./styles/homeStyles";
+import styles from "../styles/homeStyles";
 
 type RootStackParamList = {
   Home: undefined;

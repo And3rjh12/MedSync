@@ -15,7 +15,7 @@ import Swiper from "react-native-swiper";
 import { Picker } from "@react-native-picker/picker";
 import { FontAwesome } from "@expo/vector-icons";
 import axios from "axios";
-import styles from "./styles/registerStyles"; // Importa tus estilos
+import styles from "../styles/registerStyles"; // Importa tus estilos
 
 export default function RegisterScreen() {
   const [email, setEmail] = useState("");

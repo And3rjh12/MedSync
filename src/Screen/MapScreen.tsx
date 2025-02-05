@@ -5,7 +5,7 @@ import { View, Text, Button, Alert, ActivityIndicator } from "react-native";
 import MapView, { Marker, Polyline } from "react-native-maps";
 import * as Location from "expo-location";
 import axios from "axios";
-import styles from "./styles/mapStyles";
+import styles from "../styles/mapStyles";
 
 const MapScreen: React.FC = () => {
   const [directions, setDirections] = useState<any>(null);
